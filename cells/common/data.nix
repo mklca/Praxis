@@ -45,7 +45,7 @@ in {
     ];
   };
 
-  theme.base16.schemeName = "tokyo-night-terminal-dark";
+  theme.base16.schemeName = "catppuccin-mocha";
 
   users.authorizedKeys =
     l.mapAttrs

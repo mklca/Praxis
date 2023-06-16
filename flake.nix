@@ -22,7 +22,7 @@
     haumea.url = github:nix-community/haumea;
 
     hive = {
-      url = github:mklca/nix-hive/module-blocktypes;
+      url = github:divnix/hive;
       inputs = {
         haumea.follows = "haumea";
         home-manager.follows = "home-manager";
@@ -70,10 +70,7 @@
 
     paisano = {
       url = github:paisano-nix/core;
-      inputs = {
-        haumea.follows = "haumea";
-        nixpkgs.follows = "nixpkgs";
-      };
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     std = {
@@ -99,13 +96,29 @@
 
       cellBlocks = let
         inherit (std.blockTypes) data devshells functions nixago pkgs;
-        inherit (hive.blockTypes) darwinConfigurations darwinModules homeConfigurations homeModules nixosConfigurations nixosModules;
-      in [
-        (data "data")
-        {
+        inherit (hive.blockTypes) darwinConfigurations homeConfigurations nixosConfigurations;
+
+        darwinModules = {
+          name = "darwinModules";
+          type = "darwinModule";
+        };
+        homeModules = {
+          name = "homeModules";
+          type = "homeModule";
+        };
+
+        nixosModules = {
+          name = "nixosModules";
+          type = "nixosModule";
+        };
+
+        nixvimConfigurations = {
           name = "nixvimConfigurations";
           type = "nixvimConfiguration";
-        }
+        };
+      in [
+        (data "data")
+        nixvimConfigurations
         (functions "overlays")
         (pkgs "packages")
 
