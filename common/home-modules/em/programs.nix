@@ -76,7 +76,7 @@
     defaultKeymap = "viins";
     enable = true;
     enableCompletion = true;
-    enableSyntaxHighlighting = true;
+    syntaxHighlighting.enable = true;
     history = {
       expireDuplicatesFirst = true;
       extended = true;

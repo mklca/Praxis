@@ -17,7 +17,7 @@
       url = github:tinted-theming/base16-vim;
     };
 
-    flake-utils.url = github:numtide/flake-utils;
+    devshell.url = github:numtide/devshell;
 
     haumea.url = github:nix-community/haumea;
 
@@ -36,20 +36,21 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    flake-utils.url = github:numtide/flake-utils;
+
     impermanence.url = github:nix-community/impermanence;
 
     lanzaboote = {
       url = github:nix-community/lanzaboote;
-      inputs = {
-        flake-utils.follows = "flake-utils";
-        nixpkgs.follows = "nixpkgs";
-      };
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix-darwin = {
       url = github:LnL7/nix-darwin;
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixago.url = github:nix-community/nixago;
 
     nixos-generators = {
       url = github:nix-community/nixos-generators;
@@ -62,10 +63,7 @@
 
     nixvim = {
       url = github:pta2002/nixvim;
-      inputs = {
-        flake-utils.follows = "flake-utils";
-        nixpkgs.follows = "nixpkgs";
-      };
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     paisano = {
@@ -76,7 +74,8 @@
     std = {
       url = github:divnix/std;
       inputs = {
-        flake-utils.follows = "flake-utils";
+        devshell.follows = "devshell";
+        nixago.follows = "nixago";
         nixpkgs.follows = "nixpkgs";
         paisano.follows = "paisano";
       };

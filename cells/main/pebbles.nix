@@ -7,17 +7,18 @@
 }: let
   inherit (inputs) nixpkgs;
   inherit (inputs.std) std lib;
+  inherit (lib.dev) mkNixago;
 
   l = nixpkgs.lib // builtins;
 in {
-  editorconfig = lib.cfg.editorconfig {
+  editorconfig = (mkNixago lib.cfg.editorconfig) {
     data."*.nix" = {
       indent_style = "space";
       indent_size = 2;
     };
   };
 
-  lefthook = lib.cfg.lefthook {
+  lefthook = (mkNixago lib.cfg.lefthook) {
     data = {
       pre-commit = {
         parallel = true;
@@ -41,7 +42,7 @@ in {
     ];
   };
 
-  treefmt = lib.cfg.treefmt {
+  treefmt = (mkNixago lib.cfg.treefmt) {
     data.formatter.nix = {
       command = "alejandra";
       includes = ["*.nix"];
