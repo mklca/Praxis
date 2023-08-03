@@ -30,6 +30,11 @@ in
 
       commands = [
         {
+          package = nixpkgs.nixos-rebuild;
+          category = "tools";
+        }
+
+        {
           package = nixpkgs.reuse;
           category = "legal";
         }
